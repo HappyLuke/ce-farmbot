@@ -1,0 +1,11 @@
+[
+    {
+        "time": 1.00,
+        "type": "move",
+        "button": "Button.left",
+        "pos": [
+            139,
+            67
+        ]
+    }
+]

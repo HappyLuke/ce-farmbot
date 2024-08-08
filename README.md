@@ -1,9 +1,12 @@
-# PyAutoGUI Video Game Bot Tutorial
+#Farming Bot for Castle Empire
 
-Source code for the PyAutoGUI tutorial series on the **Learn Code By Gaming** YouTube channel.
+Bot is made for a 1920x1080 screen. Start by being inside the castle and have all rooms of resource types centered in a 4x4 square.
+Bot is switching between two characters all the time.
 
-- Video 1 & 2: Timing Bot
-- Video 3: Recording Bot
-- Video 4: Image Bot
+Any improvements are welcome.
 
-Watch the tutorial here: https://www.youtube.com/playlist?list=PL1m2M8LQlzfJDe1xV1py5EusLt8FFzhMA
+recorder.py is used for recording
+
+playack.py is used for action.
+
+Working and tested on Python 3.12

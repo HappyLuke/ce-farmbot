@@ -1,0 +1,56 @@
+[
+    {
+        "time": 2.9477639198303223,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            980,
+            918
+        ]
+    },
+    {
+        "time": 14.296593427658081,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            918,
+            519
+        ]
+    },
+    {
+        "time": 20.317837715148926,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            982,
+            533
+        ]
+    },
+    {
+        "time": 22.443275690078735,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            1110,
+            699
+        ]
+    },
+    {
+        "time": 24.115010499954224,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            1141,
+            803
+        ]
+    },
+    {
+        "time": 33.42243480682373,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            1000,
+            927
+        ]
+    }
+]
