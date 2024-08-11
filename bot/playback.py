@@ -16,7 +16,7 @@ def main():
         recruit()
         help()
         rally()
-        rss = ['gp', 'gp', 'gp', 'food', 'food', 'iron', 'iron', 'wood', 'wood']
+        rss = ['gp', 'gp', 'gp', 'food', 'food', 'iron', 'iron', 'wood']
         success = True
         while success:
             index = int(random.random() * len(rss))
@@ -83,12 +83,16 @@ def collect():
     path = 'collect/'
     if checkColor(773,345) in [(253, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_1.json")
+        sleep(1.00)
     if checkColor(1165,345) in [(253, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_2.json")
+        sleep(1.00)
     if checkColor(1165,597) in [(253, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_3.json")
+        sleep(1.00)
     if checkColor(773,597) in [(253, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_4.json")
+        sleep(1.00)
     playActions('general/exit_enter_castle.json')
     sleep(2.00)
 
@@ -101,6 +105,7 @@ def gather(rss_type):
         playActions(path + "gather_left.json")
     else:
         playActions(path + "gather_right.json")
+    sleep(1.50)
     if checkColor(1494, 325) == (236, 224, 186):
         playActions(path + "gather_finish.json")
         sleep(2.00)
