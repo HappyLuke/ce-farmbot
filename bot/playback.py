@@ -20,7 +20,7 @@ def main():
             if index >= len(change):
                 index = 0
         else:
-            switch_char
+            switch_char()
     
     print("Done")
 
