@@ -7,24 +7,46 @@ import random
 
 def main():
     initializePyAutoGUI()
+    index = 0
+    change = [] #['happy', 'jluke']
     countdownTimer()
     while True:
-        if checkColor(977, 531) not in [(0, 0, 0), (1, 1, 1)]:
-            playActions('general/exit_enter_castle.json')
-            sleep(2.00)
-        collect()
-        recruit()
-        help()
-        rally()
-        rss = ['gp', 'gp', 'gp', 'food', 'food', 'iron', 'iron', 'wood']
-        success = True
-        while success:
-            index = int(random.random() * len(rss))
-            success = gather(rss[index])
+        do_all()
         switch_char()
-        countdownTimerMins(3)
+        do_all()
+        if change:
+            change_acc(change[index])
+            index += 1
+            if index >= len(change):
+                index = 0
+        else:
+            switch_char
     
     print("Done")
+
+def do_all():
+    if checkColor(977, 531) not in [(0, 0, 0), (1, 1, 1)]:
+        playActions('general/exit_enter_castle.json')
+        sleep(2.00)
+    collect()
+    recruit()
+    help()
+    rally()
+    rss = ['gp', 'gp', 'gp', 'gp', 'gp', 'food', 'food', 'iron', 'iron', 'iron', 'wood', 'wood']
+    success = True
+    while success:
+        index = int(random.random() * len(rss))
+        success = gather(rss[index])
+
+def change_acc(name):
+    path = 'change/'
+    playActions(path + "logout1.json")
+    countdownTimerMins(1)
+    playActions(path + "logout2.json")
+    sleep(10)
+    playActions(path + f"login_{name}.json")
+    countdownTimerMins(3)
+    ad_check()
 
 def help():
     path = 'help/'
@@ -71,6 +93,9 @@ def switch_char():
     else:
         playActions(path + "switch_char_2.json")
     countdownTimerMins(2)
+    ad_check()
+
+def ad_check():
     if checkColor(1806, 113) == (246, 245, 245) or checkColor(1770, 128) == (246, 245, 245):
         playActions("general/remove_ad.json")
     elif checkColor(1839, 73) == (246, 245, 245):
@@ -81,6 +106,12 @@ def switch_char():
 
 def collect():
     path = 'collect/'
+    #for jluke
+    while checkColor(957, 229) in [(243, 234, 210)]:
+        playActions(path + "collect_all.json")
+        sleep(1.00)
+        # if checkColor(auto) in [(28, 135, 145)]:
+        #     playActions(path + "speed_up.json")
     if checkColor(773,345) in [(253, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_1.json")
         sleep(1.00)

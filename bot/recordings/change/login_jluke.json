@@ -1,6 +1,6 @@
 [
     {
-        "time": 2.9477639198303223,
+        "time": 1,
         "type": "click",
         "button": "Button.left",
         "pos": [
@@ -9,48 +9,48 @@
         ]
     },
     {
-        "time": 14.296593427658081,
+        "time": 15,
         "type": "click",
         "button": "Button.left",
         "pos": [
-            918,
-            519
+            1004,
+            521
         ]
     },
     {
-        "time": 20.317837715148926,
+        "time": 20,
         "type": "click",
         "button": "Button.left",
         "pos": [
-            982,
-            533
+            1090,
+            471
         ]
     },
     {
-        "time": 22.443275690078735,
+        "time": 22,
         "type": "click",
         "button": "Button.left",
         "pos": [
-            1110,
-            699
+            1152,
+            745
         ]
     },
     {
-        "time": 24.115010499954224,
+        "time": 24,
         "type": "click",
         "button": "Button.left",
         "pos": [
-            1141,
-            803
+            1163,
+            805
         ]
     },
     {
-        "time": 33.42243480682373,
+        "time": 30,
         "type": "click",
         "button": "Button.left",
         "pos": [
-            1000,
-            927
+            980,
+            918
         ]
     }
 ]
