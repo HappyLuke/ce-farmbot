@@ -1,0 +1,47 @@
+[
+    {
+        "time": 1.00,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            1720,
+            800
+        ]
+    },
+    {
+        "time": 2.00,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            930,
+            634
+        ]
+    },
+    {
+        "time": 3.00,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            900,
+            956
+        ]
+    },
+    {
+        "time": 4.00,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            1662,
+            980
+        ]
+    },
+    {
+        "time": 5.50,
+        "type": "click",
+        "button": "Button.left",
+        "pos": [
+            967,
+            624
+        ]
+    }
+]

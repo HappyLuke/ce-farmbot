@@ -18,7 +18,10 @@ def main():
     change = [] #['google_first', 'google_second']
     # defining an array of resources to gather from. one of them will be choosen randomly.
     # so if you add one type more often then others, it is more likely to gather this one
-    rss = ['gp', 'gp', 'gp', 'gp', 'gp', 'food', 'food', 'iron', 'iron', 'iron', 'iron', 'wood', 'wood']
+    rss = {
+        'array': ['gp', 'gp', 'gp', 'gp', 'iron', 'iron', 'iron', 'iron', 'food', 'food', 'wood', 'wood'],
+        'level': 4 # resource level. 6 = the highest. currently only 6 or 4 is available
+    }
     countdownTimer()
     # running forever
     while True:
@@ -51,8 +54,7 @@ def do_all(rss):
     rally()
     success = True
     while success:
-        index = int(random.random() * len(rss))
-        success = gather(rss[index])
+        success = gather(rss)
 
 def change_acc(name):
     path = 'change/'
@@ -123,11 +125,11 @@ def ad_check():
 def collect():
     path = 'collect/'
     #for jluke
-    while checkColor(957, 229) in [(243, 234, 210)]:
+    while checkColor(957, 229) in [(243, 234, 210)] or checkColor(923, 212) in [(247, 241, 222)]:
         playActions(path + "collect_all.json")
-        sleep(1.00)
-        # if checkColor(auto) in [(28, 135, 145)]:
-        #     playActions(path + "speed_up.json")
+        sleep(5.00)
+        if checkColor(1501, 965) in [(41, 77, 135)]:
+            playActions(path + "speed_up.json")
     if checkColor(773,345) in [(253, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_1.json")
         sleep(1.00)
@@ -143,9 +145,11 @@ def collect():
     playActions('general/exit_enter_castle.json')
     sleep(2.00)
 
-def gather(rss_type):
+def gather(rss):
     path = 'gather/'
-    file_name = 'gather_' + rss_type + '.json'
+    rss_type = rss['array'][int(random.random() * len(rss['array']))]
+    rss_level = rss['level']
+    file_name = f'gather{rss_level}_{rss_type}.json'
     playActions(path + file_name)
     sleep(2.00)
     if checkColor(387, 827) == (236, 224, 186):
