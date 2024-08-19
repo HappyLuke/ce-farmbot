@@ -8,8 +8,10 @@ Any improvements are welcome.
 recorder.py is used for recording
 
 playack.py is used for action.
+define configurations in config.ini and add config file as first parameter in command line
+
 Start bot:
-py -u ./bot/playback.py
+py -u ./bot/playpback.py ./bot/config.ini
 
 Working and tested on Python 3.12
 

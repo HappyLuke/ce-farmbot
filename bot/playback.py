@@ -1,27 +1,23 @@
 import pyautogui
 from time import sleep, time
 import os
+import sys
 import json
 import random
+from itertools import repeat
+import configparser
 
 
 
 # make sure to place the resource rooms correctly for collections
 # you must have two characters in your account
-# start script with py -u ./bot/playpback.py
+# start script with py -u ./bot/playpback.py ./bot/config.ini
+# define parameters in config.ini
 # tested on python 3.12
 def main():
-    initializePyAutoGUI()
+    change, rss = read_config(sys.argv[1])
     index = 0
-    # you can define to switch between two accounts. this probably needs to be adjusted by yourself.
-    # I advise just use two characters for this bot and just switch between them
-    change = [] #['google_first', 'google_second']
-    # defining an array of resources to gather from. one of them will be choosen randomly.
-    # so if you add one type more often then others, it is more likely to gather this one
-    rss = {
-        'array': ['gp', 'gp', 'gp', 'gp', 'iron', 'iron', 'iron', 'iron', 'food', 'food', 'wood', 'wood'],
-        'level': 6 # resource level. 6 = the highest. currently only 6 or 4 is available
-    }
+    initializePyAutoGUI()
     countdownTimer()
     # running forever
     while True:
@@ -44,6 +40,26 @@ def main():
         countdownTimerMins(3)
     
     print("Done")
+
+def read_config(config_file_name):
+    config = configparser.ConfigParser()
+    config.read(config_file_name)
+    change = []
+    if 'Accounts' in config:
+        change = config['Accounts']['change']
+    if 'Resources' in config:
+        rss_array = []
+        rss_array.extend(repeat('gp', int(config['Resources']['gp'])))
+        rss_array.extend(repeat('iron', int(config['Resources']['iron'])))
+        rss_array.extend(repeat('wood', int(config['Resources']['wood'])))
+        rss_array.extend(repeat('food', int(config['Resources']['food'])))
+        rss = {
+            'array': rss_array,
+            'level': int(config['Resources']['level'])
+        }
+    else:
+        raise BaseException()
+    return change, rss
 
 # collect rss, recruit if free, help members if no rally, rally if rally available and you have enough ap (only the first one), send all marches gathering
 def do_all(rss):
