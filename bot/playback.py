@@ -45,7 +45,7 @@ def read_config(config_file_name):
     config = configparser.ConfigParser()
     config.read(config_file_name)
     change = []
-    if 'Accounts' in config:
+    if 'Accounts' in config and 'change' in config['Accounts']:
         change = config['Accounts']['change']
     if 'Resources' in config:
         rss_array = []
