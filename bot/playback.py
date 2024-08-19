@@ -20,7 +20,7 @@ def main():
     # so if you add one type more often then others, it is more likely to gather this one
     rss = {
         'array': ['gp', 'gp', 'gp', 'gp', 'iron', 'iron', 'iron', 'iron', 'food', 'food', 'wood', 'wood'],
-        'level': 4 # resource level. 6 = the highest. currently only 6 or 4 is available
+        'level': 6 # resource level. 6 = the highest. currently only 6 or 4 is available
     }
     countdownTimer()
     # running forever
@@ -29,6 +29,7 @@ def main():
         do_all(rss)
         # switch to the other character in this account
         switch_char()
+        countdownTimerMins(3)
         # collect, recruit, help, rally and gather
         do_all(rss)
         # if you defined the change array, change account.
@@ -40,6 +41,7 @@ def main():
         else:
             # otherwise switch back to the other character and start again
             switch_char()
+        countdownTimerMins(3)
     
     print("Done")
 
