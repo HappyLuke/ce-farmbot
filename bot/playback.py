@@ -41,6 +41,43 @@ def main():
     
     print("Done")
 
+
+def do_alliance():
+    path = 'alliance/'
+    if checkColor(528, 984) == (217, 72, 71):
+        playActions(path + 'enter.json')
+        sleep(2)
+        if checkColor(1473, 636) == (201, 53, 54):
+            playActions(path + 'tech_enter.json')
+            sleep(1)
+            if checkColor(631, 777) == (239, 78, 80):
+                playActions(path + 'tech_donate.json')
+                sleep(1)
+                if checkColor(1848, 971) == (38, 64, 112):
+                    playActions(path + 'tech_donate_do.json')
+                playActions("general/cancel.json")
+            playActions("general/cancel.json")
+        sleep(1)
+        if checkColor(1469, 778) == (201, 53, 54):
+            playActions(path + 'gift_enter.json')
+            sleep(1)
+            while checkColor(1769, 271) == (38, 65, 111):
+                playActions(path + 'gift_claim.json')
+                playActions('general/wakeup.json')
+                sleep(1)
+            playActions(path + 'gift_second_enter.json')
+            sleep(1)
+            while checkColor(1769, 271) == (38, 65, 111):
+                playActions(path + 'gift_claim.json')
+                playActions('general/wakeup.json')
+                sleep(1)
+            playActions(path + 'gift_cancel.json')
+            sleep(1)
+        playActions(path + 'daily_rewards.json')
+        sleep(1)
+        playActions("general/cancel.json")
+        sleep(1)
+
 def read_config(config_file_name):
     config = configparser.ConfigParser()
     config.read(config_file_name)
@@ -67,6 +104,7 @@ def do_all(rss):
         playActions('general/exit_enter_castle.json')
         sleep(2.00)
     collect()
+    do_alliance()
     recruit()
     help()
     rally()
@@ -93,7 +131,7 @@ def rally():
     path = 'rally/'
     if checkColor(1460, 914) == (255, 77, 74) and checkColor(237, 136) == (42, 208, 151):
         playActions(path + "open.json")
-        sleep(1.00)
+        sleep(2.00)
         if checkColor(1439, 357) == (28, 135, 145):
             playActions(path + "add_to.json")
             sleep(1.00)
@@ -129,16 +167,25 @@ def switch_char():
     else:
         playActions(path + "switch_char_2.json")
     countdownTimerMins(2)
-    ad_check()
+    success = ad_check()
+    while success:
+        success = ad_check()
+
 
 def ad_check():
-    if checkColor(1806, 113) == (246, 245, 245):
+    success = False
+    if checkColor(1806, 113) == (246, 245, 245) or checkColor(1825, 101) == (246, 245, 245):
         playActions("general/remove_ad.json")
-    elif checkColor(1839, 73) == (246, 245, 245):
+        success = True
+    elif checkColor(1839, 73) == (246, 245, 245) or checkColor(1854, 101) == (246, 245, 245):
         playActions("general/remove_ad_2.json")
+        success = True
     elif checkColor(1772, 128) == (246, 245, 245) or checkColor(1771, 126) == (246, 245, 245):
         playActions("general/remove_ad_3.json")
-    sleep(2.00)
+        success = True
+    sleep(3.00)
+    playActions("general/wakeup.json")
+    return success
 
 def collect():
     path = 'collect/'
