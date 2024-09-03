@@ -18,7 +18,7 @@ def main():
     change, rss = read_config(sys.argv[1])
     index = 0
     initializePyAutoGUI()
-    countdownTimer()
+    countdownTimer() 
     # running forever
     while True:
         # collect, recruit, help, rally and gather
@@ -61,8 +61,8 @@ def do_alliance():
         if checkColor(1469, 778) == (201, 53, 54):
             playActions(path + 'gift_enter.json')
             sleep(1)
-            while checkColor(1769, 271) == (38, 65, 111):
-                playActions(path + 'gift_claim.json')
+            if checkColor(1769, 271) == (38, 65, 111):
+                playActions(path + 'gift_claim_all.json')
                 playActions('general/wakeup.json')
                 sleep(1)
             playActions(path + 'gift_second_enter.json')
@@ -74,9 +74,9 @@ def do_alliance():
             playActions(path + 'gift_cancel.json')
             sleep(1)
         playActions(path + 'daily_rewards.json')
-        sleep(1)
+        sleep(2)
         playActions("general/cancel.json")
-        sleep(1)
+        sleep(2)
 
 def read_config(config_file_name):
     config = configparser.ConfigParser()
@@ -107,7 +107,7 @@ def do_all(rss):
     do_alliance()
     recruit()
     help()
-    rally()
+    # rally()
     success = True
     while success:
         success = gather(rss)
@@ -126,6 +126,8 @@ def help():
     path = 'help/'
     if checkColor(1476, 913) == (99, 255, 71):
         playActions(path + "help.json")
+    elif checkColor(1366, 906) == (99, 255, 71):
+        playActions(path + "help2.json")
 
 def rally():
     path = 'rally/'
@@ -190,12 +192,12 @@ def ad_check():
 def collect():
     path = 'collect/'
     #for jluke
-    while checkColor(957, 229) in [(243, 234, 210)] or checkColor(923, 212) in [(247, 241, 222)]:
+    while checkColor(957, 229) in [(243, 234, 210), (243, 233, 208)] or checkColor(923, 212) in [(247, 241, 222), (247, 241, 221)]:
         playActions(path + "collect_all.json")
         sleep(5.00)
         if checkColor(1501, 965) in [(41, 77, 135)]:
             playActions(path + "speed_up.json")
-    if checkColor(773,345) in [(253, 251, 239), (255, 251, 239)]:
+    if checkColor(773,345) in [(253, 251, 239), (252, 251, 239), (255, 251, 239)]:
         playActions(path + "collect_1.json")
         sleep(1.00)
     if checkColor(1165,345) in [(253, 251, 239), (255, 251, 239)]:

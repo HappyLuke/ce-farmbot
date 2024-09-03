@@ -4,17 +4,8 @@
         "type": "click",
         "button": "Button.left",
         "pos": [
-            1694,
-            656
-        ]
-    },
-    {
-        "time": 2,
-        "type": "click",
-        "button": "Button.left",
-        "pos": [
-            443,
-            940
+            1727,
+            174
         ]
     },
     {
@@ -22,8 +13,8 @@
         "type": "click",
         "button": "Button.left",
         "pos": [
-            1833,
-            108
+            1050,
+            965
         ]
     }
 ]
